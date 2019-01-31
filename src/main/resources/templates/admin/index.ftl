@@ -115,9 +115,16 @@
                     <ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                <i class="fa fa-user"></i> <span class="label label-primary"></span>【<@shiro.principal type="User" property="nickName"/>】
+                                <i class="fa fa-user"></i> <span class="label label-primary"></span>【<@shiro.principal type="com.sparrow.hadmin.entity.User" property="nickName"/>】
                             </a>
                             <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <a onclick="editPassword(<@shiro.principal type="com.sparrow.hadmin.entity.User" property="id"/>)" >
+                                        <div>
+                                            <i class="fa fa-eraser"></i> 修改密码
+                                        </div>
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="${ctx!}/admin/logout">
                                         <div>
@@ -148,6 +155,22 @@
     <!-- 自定义js -->
     <script src="${ctx!}/hadmin/js/hAdmin.js"></script>
     <script type="text/javascript" src="${ctx!}/hadmin/js/index.js?v=${version!}"></script>
+
+    <script>
+        function editPassword(id){
+            layer.open({
+                type: 2,
+                title: '修改密码',
+                shadeClose: true,
+                shade: false,
+                area: ['800px', '450px'],
+                content: '${ctx!}/admin/user/password/'+id,
+                end: function(index){
+                    window.location.href="${ctx!}/admin/logout";
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
