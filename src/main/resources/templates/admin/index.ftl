@@ -53,30 +53,35 @@
                             <span class="nav-label">主页</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa fa-cog"></i>
-                            <span class="nav-label">系统管理</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                         <@shiro.hasPermission name="system:user:index">
-                            <li>
-                               <a class="J_menuItem" href="${ctx!}/admin/user/index">用户管理</a>
-                            </li>
-                         </@shiro.hasPermission>
-                         <@shiro.hasPermission name="system:role:index">
-                            <li>
-                                <a class="J_menuItem" href="${ctx!}/admin/role/index">角色管理</a>
-                            </li>
-                         </@shiro.hasPermission>
-                         <@shiro.hasPermission name="system:resource:index">
-                            <li>
-                                <a class="J_menuItem" href="${ctx!}/admin/resource/index">资源管理</a>
-                            </li>
-                         </@shiro.hasPermission>
-                        </ul>
-                    </li>
+                    <@shiro.hasPermission name="system:index">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa fa-cog"></i>
+                                <span class="nav-label">系统管理</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <@shiro.hasPermission name="system:user:index">
+                                    <li>
+                                        <a class="J_menuItem" href="${ctx!}/admin/user/index">用户管理</a>
+                                    </li>
+                                </@shiro.hasPermission>
+                                <@shiro.hasPermission name="system:role:index">
+                                    <li>
+                                        <a class="J_menuItem" href="${ctx!}/admin/role/index">角色管理</a>
+                                    </li>
+                                </@shiro.hasPermission>
+                                <@shiro.hasPermission name="system:resource:index">
+                                    <li>
+                                        <a class="J_menuItem" href="${ctx!}/admin/resource/index">资源管理</a>
+                                    </li>
+                                </@shiro.hasPermission>
+                                <#--<li>-->
+                                    <#--<a class="J_menuItem" href="${ctx!}/admin/site/edit/1">网站管理</a>-->
+                                <#--</li>-->
+                            </ul>
+                        </li>
+                    </@shiro.hasPermission>
                     <li>
                         <a href="#">
                             <i class="fa fa fa-cog"></i>
